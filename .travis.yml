@@ -4,5 +4,5 @@ jobs:
   include:
     - stage: install
       script: npm install
-    - stage: yaml2json
-      script: npm run swagger-ui:yaml2json
+    - stage: test
+      script: npm test
