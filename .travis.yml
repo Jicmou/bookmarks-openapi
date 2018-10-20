@@ -1,0 +1,8 @@
+language: node_js
+node_js: node
+jobs:
+  include:
+    - stage: install
+      script: npm install
+    - stage: yaml2json
+      script: npm run swagger-ui:yaml2json
