@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/Jicmou/bookmarks-openapi.svg?branch=master)](https://travis-ci.org/Jicmou/bookmarks-openapi)
-
+[![Build Status](https://api.travis-ci.com/Jicmou/bookmarks-openapi.svg?branch=master)](https://travis-ci.com/Jicmou/bookmarks-openapi)
 # Bookmarks-openapi
 
 ## Installation
