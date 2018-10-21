@@ -47,16 +47,10 @@ window.spec =
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/BookmarkList"
+                                    "$ref": "#/components/schemas/GetBookmarkListBody"
                                 }
                             }
                         }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/RequestError"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/ResourceNotFound"
                     },
                     "500": {
                         "$ref": "#/components/responses/ServerError"
@@ -187,6 +181,14 @@ window.spec =
                 "type": "array",
                 "items": {
                     "$ref": "#/components/schemas/Bookmark"
+                }
+            },
+            "GetBookmarkListBody": {
+                "type": "object",
+                "properties": {
+                    "bookmarkList": {
+                        "$ref": "#/components/schemas/BookmarkList"
+                    }
                 }
             }
         },
