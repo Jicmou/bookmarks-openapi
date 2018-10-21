@@ -63,13 +63,23 @@ window.spec =
                 ],
                 "summary": "Create a Bookmark",
                 "description": "Create a Bookmark from a link",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostBookmarkRequestBody"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "The newly created Bookmark",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PostBookmarkBody"
+                                    "$ref": "#/components/schemas/PostBookmarkResponseBody"
                                 }
                             }
                         }
@@ -213,11 +223,19 @@ window.spec =
                     }
                 }
             },
-            "PostBookmarkBody": {
+            "PostBookmarkResponseBody": {
                 "type": "object",
                 "properties": {
                     "bookmark": {
                         "$ref": "#/components/schemas/Bookmark"
+                    }
+                }
+            },
+            "PostBookmarkRequestBody": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "$ref": "#/components/schemas/url"
                     }
                 }
             }
