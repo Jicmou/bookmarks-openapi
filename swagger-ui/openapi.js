@@ -56,6 +56,28 @@ window.spec =
                         "$ref": "#/components/responses/ServerError"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Bookmark"
+                ],
+                "summary": "Create a Bookmark",
+                "description": "Create a Bookmark from a link",
+                "responses": {
+                    "200": {
+                        "description": "The newly created Bookmark",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostBookmarkBody"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/ServerError"
+                    }
+                }
             }
         }
     },
@@ -188,6 +210,14 @@ window.spec =
                 "properties": {
                     "bookmarkList": {
                         "$ref": "#/components/schemas/BookmarkList"
+                    }
+                }
+            },
+            "PostBookmarkBody": {
+                "type": "object",
+                "properties": {
+                    "bookmark": {
+                        "$ref": "#/components/schemas/Bookmark"
                     }
                 }
             }
