@@ -38,11 +38,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookmarkList'
-        400:
-          $ref: '#/components/responses/RequestError'
-        404:
-          $ref: '#/components/responses/ResourceNotFound'
+                $ref: '#/components/schemas/GetBookmarkListBody'
         500:
           $ref: '#/components/responses/ServerError'
 
@@ -139,6 +135,12 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Bookmark'
+
+    GetBookmarkListBody:
+      type: object
+      properties:
+        bookmarkList:
+          $ref: '#/components/schemas/BookmarkList'
 
   # Parameters that can be reused across routes
   parameters:
