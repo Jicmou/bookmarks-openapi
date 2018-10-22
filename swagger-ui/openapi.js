@@ -52,6 +52,9 @@ window.spec =
                             }
                         }
                     },
+                    "400": {
+                        "$ref": "#/components/responses/RequestError"
+                    },
                     "500": {
                         "$ref": "#/components/responses/ServerError"
                     }
@@ -74,7 +77,7 @@ window.spec =
                     }
                 },
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "The newly created Bookmark",
                         "content": {
                             "application/json": {
@@ -83,6 +86,61 @@ window.spec =
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/ServerError"
+                    }
+                }
+            }
+        },
+        "/bookmarks/{bookmarkId}": {
+            "get": {
+                "tags": [
+                    "Bookmark"
+                ],
+                "summary": "Get a Bookmark by id",
+                "description": "Retrieve a Bookmark by its id",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/bookmarkId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The requested Bookmark",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostBookmarkResponseBody"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ResourceNotFound"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/ServerError"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bookmark"
+                ],
+                "summary": "Delete a Bookmark",
+                "description": "Deletes Bookmark from collection",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/bookmarkId"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "$ref": "#/components/responses/SuccessNoContent"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ResourceNotFound"
                     },
                     "500": {
                         "$ref": "#/components/responses/ServerError"
@@ -125,6 +183,9 @@ window.spec =
                         }
                     }
                 }
+            },
+            "SuccessNoContent": {
+                "description": "Success, no content returned"
             }
         },
         "schemas": {
