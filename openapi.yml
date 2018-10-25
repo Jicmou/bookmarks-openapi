@@ -43,6 +43,7 @@ paths:
           $ref: '#/components/responses/RequestError'
         500:
           $ref: '#/components/responses/ServerError'
+
     post:
       tags:
         - Bookmark
@@ -54,7 +55,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PostBookmarkRequestBody'
-
       responses:
         201:
           description: The newly created Bookmark
@@ -64,6 +64,7 @@ paths:
                 $ref: '#/components/schemas/PostBookmarkResponseBody'
         500:
           $ref: '#/components/responses/ServerError'
+
   /bookmarks/{bookmarkId}:
     get:
       tags:
@@ -83,6 +84,32 @@ paths:
           $ref: '#/components/responses/ResourceNotFound'
         500:
           $ref: '#/components/responses/ServerError'
+
+    put:
+      tags:
+        - Bookmark
+      summary: Update a Bookmark Tag list by id
+      description: Update a Bookmark Tag list by its id
+      parameters:
+        - $ref: '#/components/parameters/bookmarkId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutBookmarkRequestBody'
+      responses:
+        200:
+          description: The requested Bookmark
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostBookmarkResponseBody'
+        404:
+          $ref: '#/components/responses/ResourceNotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
     delete:
       tags:
         - Bookmark
@@ -96,6 +123,24 @@ paths:
           $ref: '#/components/responses/SuccessNoContent'
         404:
           $ref: '#/components/responses/ResourceNotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /tags:
+    get:
+      tags:
+        - Tag
+      summary: Get a Tag Collection
+      description: Retrieve a Collection of Tags
+      responses:
+        200:
+          description: A Tag Collection
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTagListResponseBody'
+        400:
+          $ref: '#/components/responses/RequestError'
         500:
           $ref: '#/components/responses/ServerError'
 
@@ -134,6 +179,11 @@ components:
       properties:
         url:
           $ref: '#/components/schemas/url'
+    PutBookmarkRequestBody:
+      type: object
+      properties:
+        tagNameList:
+          $ref: '#/components/schemas/url'
 
     # Response bodies
     GetBookmarkListResponseBody:
@@ -141,6 +191,11 @@ components:
       properties:
         bookmarkList:
           $ref: '#/components/schemas/BookmarkList'
+    GetTagListResponseBody:
+      type: object
+      properties:
+        tagList:
+          $ref: '#/components/schemas/TagList'
     PostBookmarkResponseBody:
       type: object
       properties:
@@ -219,6 +274,10 @@ components:
     tagName:
       type: string
       example: 'startup'
+    tagNameList:
+      type: array
+      items:
+        $ref: '#/components/schemas/tagName'
     title:
       type: string
       example: 'Klaxoon en 1 minute'

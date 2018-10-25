@@ -124,6 +124,46 @@ window.spec =
                     }
                 }
             },
+            "put": {
+                "tags": [
+                    "Bookmark"
+                ],
+                "summary": "Update a Bookmark Tag list by id",
+                "description": "Update a Bookmark Tag list by its id",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/bookmarkId"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PutBookmarkRequestBody"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The requested Bookmark",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostBookmarkResponseBody"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ResourceNotFound"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/ServerError"
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Bookmark"
@@ -141,6 +181,33 @@ window.spec =
                     },
                     "404": {
                         "$ref": "#/components/responses/ResourceNotFound"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/ServerError"
+                    }
+                }
+            }
+        },
+        "/tags": {
+            "get": {
+                "tags": [
+                    "Tag"
+                ],
+                "summary": "Get a Tag Collection",
+                "description": "Retrieve a Collection of Tags",
+                "responses": {
+                    "200": {
+                        "description": "A Tag Collection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetTagListResponseBody"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/RequestError"
                     },
                     "500": {
                         "$ref": "#/components/responses/ServerError"
@@ -197,11 +264,27 @@ window.spec =
                     }
                 }
             },
+            "PutBookmarkRequestBody": {
+                "type": "object",
+                "properties": {
+                    "tagNameList": {
+                        "$ref": "#/components/schemas/url"
+                    }
+                }
+            },
             "GetBookmarkListResponseBody": {
                 "type": "object",
                 "properties": {
                     "bookmarkList": {
                         "$ref": "#/components/schemas/BookmarkList"
+                    }
+                }
+            },
+            "GetTagListResponseBody": {
+                "type": "object",
+                "properties": {
+                    "tagList": {
+                        "$ref": "#/components/schemas/TagList"
                     }
                 }
             },
@@ -312,6 +395,12 @@ window.spec =
             "tagName": {
                 "type": "string",
                 "example": "startup"
+            },
+            "tagNameList": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/tagName"
+                }
             },
             "title": {
                 "type": "string",
