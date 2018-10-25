@@ -128,7 +128,66 @@ components:
 
   # Anything that is referenced will be defined here
   schemas:
-    # Properties used in models
+    # Resquest bodies
+    PostBookmarkRequestBody:
+      type: object
+      properties:
+        url:
+          $ref: '#/components/schemas/url'
+
+    # Response bodies
+    GetBookmarkListResponseBody:
+      type: object
+      properties:
+        bookmarkList:
+          $ref: '#/components/schemas/BookmarkList'
+    PostBookmarkResponseBody:
+      type: object
+      properties:
+        bookmark:
+          $ref: '#/components/schemas/Bookmark'
+
+    # Ressources
+    Bookmark:
+      type: object
+      properties:
+        authorName:
+          $ref: '#/components/schemas/authorName'
+        creationDate:
+          $ref: '#/components/schemas/creationDate'
+        duration:
+          $ref: '#/components/schemas/duration'
+        height:
+          $ref: '#/components/schemas/height'
+        id:
+          $ref: '#/components/schemas/id'
+        tagEndPointList:
+          $ref: '#/components/schemas/tagEndPointList'
+        title:
+          $ref: '#/components/schemas/title'
+        type:
+          $ref: '#/components/schemas/type'
+        url:
+          $ref: '#/components/schemas/url'
+        width:
+          $ref: '#/components/schemas/width'
+    BookmarkList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Bookmark'
+    Tag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        name:
+          $ref: '#/components/schemas/tagName'
+    TagList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Tag'
+
+  # Properties used in models
     creationDate:
       type: string
       example: '2017-06-28 11:19:07'
@@ -197,63 +256,6 @@ components:
           $ref: '#/components/schemas/code'
         message:
           $ref: '#/components/schemas/message'
-
-    # Ressources
-    Bookmark:
-      type: object
-      properties:
-        authorName:
-          $ref: '#/components/schemas/authorName'
-        creationDate:
-          $ref: '#/components/schemas/creationDate'
-        duration:
-          $ref: '#/components/schemas/duration'
-        height:
-          $ref: '#/components/schemas/height'
-        id:
-          $ref: '#/components/schemas/id'
-        tagEndPointList:
-          $ref: '#/components/schemas/tagEndPointList'
-        title:
-          $ref: '#/components/schemas/title'
-        type:
-          $ref: '#/components/schemas/type'
-        url:
-          $ref: '#/components/schemas/url'
-        width:
-          $ref: '#/components/schemas/width'
-
-    BookmarkList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Bookmark'
-
-    Tag:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/id'
-        name:
-          $ref: '#/components/schemas/tagName'
-
-    # Response bodies
-    GetBookmarkListResponseBody:
-      type: object
-      properties:
-        bookmarkList:
-          $ref: '#/components/schemas/BookmarkList'
-    
-    PostBookmarkResponseBody:
-      type: object
-      properties:
-        bookmark:
-          $ref: '#/components/schemas/Bookmark'
-
-    PostBookmarkRequestBody:
-      type: object
-      properties:
-        url:
-          $ref: '#/components/schemas/url'
 
   # Parameters that can be reused across routes
   parameters:

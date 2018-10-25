@@ -189,6 +189,88 @@ window.spec =
             }
         },
         "schemas": {
+            "PostBookmarkRequestBody": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "$ref": "#/components/schemas/url"
+                    }
+                }
+            },
+            "GetBookmarkListResponseBody": {
+                "type": "object",
+                "properties": {
+                    "bookmarkList": {
+                        "$ref": "#/components/schemas/BookmarkList"
+                    }
+                }
+            },
+            "PostBookmarkResponseBody": {
+                "type": "object",
+                "properties": {
+                    "bookmark": {
+                        "$ref": "#/components/schemas/Bookmark"
+                    }
+                }
+            },
+            "Bookmark": {
+                "type": "object",
+                "properties": {
+                    "authorName": {
+                        "$ref": "#/components/schemas/authorName"
+                    },
+                    "creationDate": {
+                        "$ref": "#/components/schemas/creationDate"
+                    },
+                    "duration": {
+                        "$ref": "#/components/schemas/duration"
+                    },
+                    "height": {
+                        "$ref": "#/components/schemas/height"
+                    },
+                    "id": {
+                        "$ref": "#/components/schemas/id"
+                    },
+                    "tagEndPointList": {
+                        "$ref": "#/components/schemas/tagEndPointList"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/title"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/type"
+                    },
+                    "url": {
+                        "$ref": "#/components/schemas/url"
+                    },
+                    "width": {
+                        "$ref": "#/components/schemas/width"
+                    }
+                }
+            },
+            "BookmarkList": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Bookmark"
+                }
+            },
+            "Tag": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/id"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/tagName"
+                    }
+                }
+            },
+            "TagList": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Tag"
+                }
+            },
             "creationDate": {
                 "type": "string",
                 "example": "2017-06-28 11:19:07"
@@ -277,82 +359,6 @@ window.spec =
                     },
                     "message": {
                         "$ref": "#/components/schemas/message"
-                    }
-                }
-            },
-            "Bookmark": {
-                "type": "object",
-                "properties": {
-                    "authorName": {
-                        "$ref": "#/components/schemas/authorName"
-                    },
-                    "creationDate": {
-                        "$ref": "#/components/schemas/creationDate"
-                    },
-                    "duration": {
-                        "$ref": "#/components/schemas/duration"
-                    },
-                    "height": {
-                        "$ref": "#/components/schemas/height"
-                    },
-                    "id": {
-                        "$ref": "#/components/schemas/id"
-                    },
-                    "tagEndPointList": {
-                        "$ref": "#/components/schemas/tagEndPointList"
-                    },
-                    "title": {
-                        "$ref": "#/components/schemas/title"
-                    },
-                    "type": {
-                        "$ref": "#/components/schemas/type"
-                    },
-                    "url": {
-                        "$ref": "#/components/schemas/url"
-                    },
-                    "width": {
-                        "$ref": "#/components/schemas/width"
-                    }
-                }
-            },
-            "BookmarkList": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/Bookmark"
-                }
-            },
-            "Tag": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/id"
-                    },
-                    "name": {
-                        "$ref": "#/components/schemas/tagName"
-                    }
-                }
-            },
-            "GetBookmarkListResponseBody": {
-                "type": "object",
-                "properties": {
-                    "bookmarkList": {
-                        "$ref": "#/components/schemas/BookmarkList"
-                    }
-                }
-            },
-            "PostBookmarkResponseBody": {
-                "type": "object",
-                "properties": {
-                    "bookmark": {
-                        "$ref": "#/components/schemas/Bookmark"
-                    }
-                }
-            },
-            "PostBookmarkRequestBody": {
-                "type": "object",
-                "properties": {
-                    "url": {
-                        "$ref": "#/components/schemas/url"
                     }
                 }
             }
