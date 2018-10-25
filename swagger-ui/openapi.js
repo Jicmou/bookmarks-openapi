@@ -47,7 +47,7 @@ window.spec =
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GetBookmarkListBody"
+                                    "$ref": "#/components/schemas/GetBookmarkListResponseBody"
                                 }
                             }
                         }
@@ -189,7 +189,89 @@ window.spec =
             }
         },
         "schemas": {
-            "addedDate": {
+            "PostBookmarkRequestBody": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "$ref": "#/components/schemas/url"
+                    }
+                }
+            },
+            "GetBookmarkListResponseBody": {
+                "type": "object",
+                "properties": {
+                    "bookmarkList": {
+                        "$ref": "#/components/schemas/BookmarkList"
+                    }
+                }
+            },
+            "PostBookmarkResponseBody": {
+                "type": "object",
+                "properties": {
+                    "bookmark": {
+                        "$ref": "#/components/schemas/Bookmark"
+                    }
+                }
+            },
+            "Bookmark": {
+                "type": "object",
+                "properties": {
+                    "authorName": {
+                        "$ref": "#/components/schemas/authorName"
+                    },
+                    "creationDate": {
+                        "$ref": "#/components/schemas/creationDate"
+                    },
+                    "duration": {
+                        "$ref": "#/components/schemas/duration"
+                    },
+                    "height": {
+                        "$ref": "#/components/schemas/height"
+                    },
+                    "id": {
+                        "$ref": "#/components/schemas/id"
+                    },
+                    "tagEndPointList": {
+                        "$ref": "#/components/schemas/tagEndPointList"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/title"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/type"
+                    },
+                    "url": {
+                        "$ref": "#/components/schemas/url"
+                    },
+                    "width": {
+                        "$ref": "#/components/schemas/width"
+                    }
+                }
+            },
+            "BookmarkList": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Bookmark"
+                }
+            },
+            "Tag": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/id"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/tagName"
+                    }
+                }
+            },
+            "TagList": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Tag"
+                }
+            },
+            "creationDate": {
                 "type": "string",
                 "example": "2017-06-28 11:19:07"
             },
@@ -201,6 +283,14 @@ window.spec =
                 "type": "number",
                 "example": 200
             },
+            "duration": {
+                "type": "number | null",
+                "example": 60
+            },
+            "height": {
+                "type": "number",
+                "example": 400
+            },
             "id": {
                 "type": "number",
                 "example": 1
@@ -209,13 +299,35 @@ window.spec =
                 "type": "string",
                 "example": "Ressource not found"
             },
+            "tagEndPoint": {
+                "type": "string",
+                "example": "/v1/tags/1"
+            },
+            "tagEndPointList": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/tagEndPoint"
+                }
+            },
+            "tagName": {
+                "type": "string",
+                "example": "startup"
+            },
             "title": {
                 "type": "string",
                 "example": "Klaxoon en 1 minute"
             },
+            "type": {
+                "type": "string",
+                "example": "video"
+            },
             "url": {
                 "type": "string",
-                "example": "http://www.example.com/"
+                "example": "https://vimeo.com/223469420"
+            },
+            "width": {
+                "type": "number",
+                "example": 600
             },
             "ConflictError": {
                 "type": "object",
@@ -247,56 +359,6 @@ window.spec =
                     },
                     "message": {
                         "$ref": "#/components/schemas/message"
-                    }
-                }
-            },
-            "Bookmark": {
-                "type": "object",
-                "properties": {
-                    "addedDate": {
-                        "$ref": "#/components/schemas/addedDate"
-                    },
-                    "authorName": {
-                        "$ref": "#/components/schemas/authorName"
-                    },
-                    "id": {
-                        "$ref": "#/components/schemas/id"
-                    },
-                    "title": {
-                        "$ref": "#/components/schemas/title"
-                    },
-                    "url": {
-                        "$ref": "#/components/schemas/url"
-                    }
-                }
-            },
-            "BookmarkList": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/Bookmark"
-                }
-            },
-            "GetBookmarkListBody": {
-                "type": "object",
-                "properties": {
-                    "bookmarkList": {
-                        "$ref": "#/components/schemas/BookmarkList"
-                    }
-                }
-            },
-            "PostBookmarkResponseBody": {
-                "type": "object",
-                "properties": {
-                    "bookmark": {
-                        "$ref": "#/components/schemas/Bookmark"
-                    }
-                }
-            },
-            "PostBookmarkRequestBody": {
-                "type": "object",
-                "properties": {
-                    "url": {
-                        "$ref": "#/components/schemas/url"
                     }
                 }
             }
