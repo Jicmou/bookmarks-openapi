@@ -38,7 +38,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetBookmarkListBody'
+                $ref: '#/components/schemas/GetBookmarkListResponseBody'
         400:
           $ref: '#/components/responses/RequestError'
         500:
@@ -129,7 +129,7 @@ components:
   # Anything that is referenced will be defined here
   schemas:
     # Properties used in models
-    addedDate:
+    creationDate:
       type: string
       example: '2017-06-28 11:19:07'
     authorName:
@@ -138,19 +138,41 @@ components:
     code:
       type: number
       example: 200
+    duration:
+      type: number | null
+      example: 60
+    height:
+      type: number
+      example: 400
     id:
       type: number
       example: 1
     message:
       type: string
       example: 'Ressource not found'
+    tagEndPoint:
+      type: string
+      example: '/v1/tags/1'
+    tagEndPointList:
+      type: array
+      items:
+        $ref: '#/components/schemas/tagEndPoint'
+    tagName:
+      type: string
+      example: 'startup'
     title:
       type: string
       example: 'Klaxoon en 1 minute'
+    type:
+      type: string
+      example: 'video'
     url:
       type: string
-      example: 'http://www.example.com/'
-
+      example: 'https://vimeo.com/223469420'
+    width:
+      type: number
+      example: 600
+    
     # Error models
     ConflictError:
       type: object
@@ -180,24 +202,42 @@ components:
     Bookmark:
       type: object
       properties:
-        addedDate:
-          $ref: '#/components/schemas/addedDate'
         authorName:
           $ref: '#/components/schemas/authorName'
+        creationDate:
+          $ref: '#/components/schemas/creationDate'
+        duration:
+          $ref: '#/components/schemas/duration'
+        height:
+          $ref: '#/components/schemas/height'
         id:
           $ref: '#/components/schemas/id'
+        tagEndPointList:
+          $ref: '#/components/schemas/tagEndPointList'
         title:
           $ref: '#/components/schemas/title'
+        type:
+          $ref: '#/components/schemas/type'
         url:
           $ref: '#/components/schemas/url'
+        width:
+          $ref: '#/components/schemas/width'
 
     BookmarkList:
       type: array
       items:
         $ref: '#/components/schemas/Bookmark'
 
+    Tag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        name:
+          $ref: '#/components/schemas/tagName'
+
     # Response bodies
-    GetBookmarkListBody:
+    GetBookmarkListResponseBody:
       type: object
       properties:
         bookmarkList:
