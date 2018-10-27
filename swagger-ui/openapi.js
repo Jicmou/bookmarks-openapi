@@ -82,7 +82,7 @@ window.spec =
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PostBookmarkResponseBody"
+                                    "$ref": "#/components/schemas/BookmarkResponseBody"
                                 }
                             }
                         }
@@ -111,7 +111,7 @@ window.spec =
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PostBookmarkResponseBody"
+                                    "$ref": "#/components/schemas/BookmarkResponseBody"
                                 }
                             }
                         }
@@ -151,7 +151,7 @@ window.spec =
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PostBookmarkResponseBody"
+                                    "$ref": "#/components/schemas/BookmarkResponseBody"
                                 }
                             }
                         }
@@ -208,6 +208,41 @@ window.spec =
                     },
                     "400": {
                         "$ref": "#/components/responses/RequestError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/ServerError"
+                    }
+                }
+            }
+        },
+        "/tags/{tagId}": {
+            "get": {
+                "tags": [
+                    "Tag"
+                ],
+                "summary": "Get a Tag by id",
+                "description": "Retrieve a Tag by its id",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/tagId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The requested Tag",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TagResponseBody"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/RequestError"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ResourceNotFound"
                     },
                     "500": {
                         "$ref": "#/components/responses/ServerError"
@@ -288,11 +323,19 @@ window.spec =
                     }
                 }
             },
-            "PostBookmarkResponseBody": {
+            "BookmarkResponseBody": {
                 "type": "object",
                 "properties": {
                     "bookmark": {
                         "$ref": "#/components/schemas/Bookmark"
+                    }
+                }
+            },
+            "TagResponseBody": {
+                "type": "object",
+                "properties": {
+                    "tag": {
+                        "$ref": "#/components/schemas/Tag"
                     }
                 }
             },
@@ -458,6 +501,15 @@ window.spec =
                 "in": "path",
                 "required": true,
                 "description": "Bookmark ID",
+                "schema": {
+                    "$ref": "#/components/schemas/id"
+                }
+            },
+            "tagId": {
+                "name": "tagId",
+                "in": "path",
+                "required": true,
+                "description": "Tag ID",
                 "schema": {
                     "$ref": "#/components/schemas/id"
                 }

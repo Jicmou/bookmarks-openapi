@@ -61,7 +61,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostBookmarkResponseBody'
+                $ref: '#/components/schemas/BookmarkResponseBody'
         500:
           $ref: '#/components/responses/ServerError'
 
@@ -79,7 +79,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostBookmarkResponseBody'
+                $ref: '#/components/schemas/BookmarkResponseBody'
         404:
           $ref: '#/components/responses/ResourceNotFound'
         500:
@@ -104,7 +104,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostBookmarkResponseBody'
+                $ref: '#/components/schemas/BookmarkResponseBody'
         404:
           $ref: '#/components/responses/ResourceNotFound'
         500:
@@ -141,6 +141,27 @@ paths:
                 $ref: '#/components/schemas/GetTagListResponseBody'
         400:
           $ref: '#/components/responses/RequestError'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /tags/{tagId}:
+    get:
+      tags:
+        - Tag
+      summary: Get a Tag by id
+      description: Retrieve a Tag by its id
+      parameters:
+        - $ref: '#/components/parameters/tagId'
+      responses:
+        200:
+          description: The requested Tag
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagResponseBody'
+        400:
+          $ref: '#/components/responses/RequestError'
+        404:
+          $ref: '#/components/responses/ResourceNotFound'
         500:
           $ref: '#/components/responses/ServerError'
 
@@ -196,11 +217,16 @@ components:
       properties:
         tagList:
           $ref: '#/components/schemas/TagList'
-    PostBookmarkResponseBody:
+    BookmarkResponseBody:
       type: object
       properties:
         bookmark:
           $ref: '#/components/schemas/Bookmark'
+    TagResponseBody:
+      type: object
+      properties:
+        tag:
+          $ref: '#/components/schemas/Tag'
 
     # Ressources
     Bookmark:
@@ -323,5 +349,12 @@ components:
       in: path
       required: true
       description: Bookmark ID
+      schema:
+        $ref: '#/components/schemas/id'
+    tagId:
+      name: tagId
+      in: path
+      required: true
+      description: Tag ID
       schema:
         $ref: '#/components/schemas/id'
