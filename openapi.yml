@@ -61,7 +61,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostBookmarkResponseBody'
+                $ref: '#/components/schemas/BookmarkResponseBody'
         500:
           $ref: '#/components/responses/ServerError'
 
@@ -79,7 +79,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostBookmarkResponseBody'
+                $ref: '#/components/schemas/BookmarkResponseBody'
         404:
           $ref: '#/components/responses/ResourceNotFound'
         500:
@@ -104,7 +104,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostBookmarkResponseBody'
+                $ref: '#/components/schemas/BookmarkResponseBody'
         404:
           $ref: '#/components/responses/ResourceNotFound'
         500:
@@ -196,7 +196,7 @@ components:
       properties:
         tagList:
           $ref: '#/components/schemas/TagList'
-    PostBookmarkResponseBody:
+    BookmarkResponseBody:
       type: object
       properties:
         bookmark:

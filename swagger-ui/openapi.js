@@ -82,7 +82,7 @@ window.spec =
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PostBookmarkResponseBody"
+                                    "$ref": "#/components/schemas/BookmarkResponseBody"
                                 }
                             }
                         }
@@ -111,7 +111,7 @@ window.spec =
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PostBookmarkResponseBody"
+                                    "$ref": "#/components/schemas/BookmarkResponseBody"
                                 }
                             }
                         }
@@ -151,7 +151,7 @@ window.spec =
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PostBookmarkResponseBody"
+                                    "$ref": "#/components/schemas/BookmarkResponseBody"
                                 }
                             }
                         }
@@ -288,7 +288,7 @@ window.spec =
                     }
                 }
             },
-            "PostBookmarkResponseBody": {
+            "BookmarkResponseBody": {
                 "type": "object",
                 "properties": {
                     "bookmark": {
