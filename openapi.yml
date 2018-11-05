@@ -204,7 +204,7 @@ components:
       type: object
       properties:
         tagNameList:
-          $ref: '#/components/schemas/url'
+          $ref: '#/components/schemas/tagNameList'
 
     # Response bodies
     GetBookmarkListResponseBody:

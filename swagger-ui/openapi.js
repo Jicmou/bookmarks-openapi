@@ -303,7 +303,7 @@ window.spec =
                 "type": "object",
                 "properties": {
                     "tagNameList": {
-                        "$ref": "#/components/schemas/url"
+                        "$ref": "#/components/schemas/tagNameList"
                     }
                 }
             },
